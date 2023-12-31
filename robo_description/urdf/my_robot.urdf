@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Robot Description -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.5" radius="0.3"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.3"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="left_wheel">
+    <visual>
+      <origin xyz="0 -0.15 0" rpy="0 1.5708 1.5708"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.7"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.15 0" rpy="0 1.5708 1.5708"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.7"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="right_wheel">
+    <visual>
+      <origin xyz="0 0.15 0" rpy="0 1.5708 1.5708"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.7"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.15 0" rpy="0 1.5708 1.5708"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.7"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joints -->
+  <joint name="base_to_left_wheel" type="revolute">
+    <origin xyz="0 -0.15 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.1416" upper="3.1416" effort="100" velocity="1"/>
+  </joint>
+
+  <joint name="base_to_right_wheel" type="revolute">
+    <origin xyz="0 0.15 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.1416" upper="3.1416" effort="100" velocity="1"/>
+  </joint>
+
+</robot>
